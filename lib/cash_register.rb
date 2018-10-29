@@ -3,7 +3,7 @@ class CashRegister
 
   attr_accessor :total, :discount, :items
 
-  def initialize (discount = nil)
+  def initialize (discount = 0)
     @total = 0
     @discount = discount
     @items = []
@@ -17,14 +17,14 @@ class CashRegister
   end
 
   def apply_discount
-     # binding.pry
+
      #total is equal to 1000 and discount is equal to 200
     if self.discount > 0
-      self.discount = self.discount/100.to_f
-       self.total = self.total - (self.total * (self.discount))
-        "After the discount, the total comes to $#{@total.to_i}."
+      amount_with_decimal = self.discount.to_f/100
+      self.total = self.total - (self.total * (amount_with_decimal))
+      "After the discount, the total comes to $#{@total.to_i}."
     else
-      puts "There is no discount to apply."
+      "There is no discount to apply."
     end
   end
 
